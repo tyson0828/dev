@@ -1,0 +1,4 @@
+﻿  ConsoleApplication1.cpp
+D:\dev\csharp\ConsoleApplication1\ConsoleApplication1\ConsoleApplication1.cpp(47,16): warning C4244: '=': conversion from 'double' to 'LONG', possible loss of data
+D:\dev\csharp\ConsoleApplication1\ConsoleApplication1\ConsoleApplication1.cpp(48,16): warning C4244: '=': conversion from 'double' to 'LONG', possible loss of data
+  ConsoleApplication1.vcxproj -> D:\dev\csharp\ConsoleApplication1\ConsoleApplication1\x64\Debug\ConsoleApplication1.exe

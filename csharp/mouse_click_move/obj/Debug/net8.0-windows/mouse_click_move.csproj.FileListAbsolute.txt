@@ -1,0 +1,14 @@
+D:\dev\csharp\mouse_click_move\bin\Debug\net8.0-windows\mouse_click_move.exe
+D:\dev\csharp\mouse_click_move\bin\Debug\net8.0-windows\mouse_click_move.deps.json
+D:\dev\csharp\mouse_click_move\bin\Debug\net8.0-windows\mouse_click_move.runtimeconfig.json
+D:\dev\csharp\mouse_click_move\bin\Debug\net8.0-windows\mouse_click_move.dll
+D:\dev\csharp\mouse_click_move\bin\Debug\net8.0-windows\mouse_click_move.pdb
+D:\dev\csharp\mouse_click_move\obj\Debug\net8.0-windows\mouse_click_move.GeneratedMSBuildEditorConfig.editorconfig
+D:\dev\csharp\mouse_click_move\obj\Debug\net8.0-windows\mouse_click_move.AssemblyInfoInputs.cache
+D:\dev\csharp\mouse_click_move\obj\Debug\net8.0-windows\mouse_click_move.AssemblyInfo.cs
+D:\dev\csharp\mouse_click_move\obj\Debug\net8.0-windows\mouse_click_move.csproj.CoreCompileInputs.cache
+D:\dev\csharp\mouse_click_move\obj\Debug\net8.0-windows\mouse_click_move.dll
+D:\dev\csharp\mouse_click_move\obj\Debug\net8.0-windows\refint\mouse_click_move.dll
+D:\dev\csharp\mouse_click_move\obj\Debug\net8.0-windows\mouse_click_move.pdb
+D:\dev\csharp\mouse_click_move\obj\Debug\net8.0-windows\mouse_click_move.genruntimeconfig.cache
+D:\dev\csharp\mouse_click_move\obj\Debug\net8.0-windows\ref\mouse_click_move.dll

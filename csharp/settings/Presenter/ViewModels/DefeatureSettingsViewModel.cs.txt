@@ -1,0 +1,124 @@
+using System;
+using System.Collections.ObjectModel;
+using System.IO;
+using System.Linq;
+using System.Windows;
+using System.Windows.Input;
+using System.Xml.Linq;
+using Presenter.Models;
+
+namespace Presenter.ViewModels
+{
+    public class DefeatureSettingsViewModel : ViewModelBase
+    {
+        private string xmlFilePath = @"D:\dev\csharp\settings\Presenter\config.xml";
+        private XElement configXml;
+        public ObservableCollection<DefeatureSettingsModel> DefeatureTokens { get; set; }
+
+        public ICommand AddSQLSearchKeyCommand { get; }
+        public ICommand RemoveSQLSearchKeyCommand { get; }
+        public ICommand SaveCommand { get; }
+
+        public DefeatureSettingsViewModel()
+        {
+            DefeatureTokens = new ObservableCollection<DefeatureSettingsModel>();
+            LoadConfiguration();
+
+            AddSQLSearchKeyCommand = new RelayCommand<object>(AddSQLSearchKey);
+            RemoveSQLSearchKeyCommand = new RelayCommand<object>(RemoveSQLSearchKey);
+            SaveCommand = new RelayCommand<object>(SaveConfiguration);
+        }
+
+        private void LoadConfiguration()
+        {
+            try
+            {
+                if (!File.Exists(xmlFilePath))
+                {
+                    // Create a new XML structure if the file is missing
+                    configXml = new XElement("Configuration", new XElement("Defeature"));
+                    configXml.Save(xmlFilePath);
+                }
+                else
+                {
+                    configXml = XElement.Load(xmlFilePath);
+                }
+
+                DefeatureTokens.Clear();
+                XElement defeature = configXml.Element("Defeature");
+                if (defeature == null) return;
+
+                foreach (var token in defeature.Elements())
+                {
+                    var model = new DefeatureSettingsModel
+                    {
+                        PrefixOffset = token.Attribute("PrefixOffset")?.Value ?? "0",
+                        SQLSearchKeys = new ObservableCollection<string>(token.Elements("SQLSearchKey").Select(e => e.Value))
+                    };
+                    DefeatureTokens.Add(model);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading XML: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void AddSQLSearchKey(object parameter)
+        {
+            if (parameter is DefeatureSettingsModel tokenModel)
+            {
+                // Let user input the key instead of using "New SQL Key"
+                string newKey = Microsoft.VisualBasic.Interaction.InputBox("Enter new SQLSearchKey:", "Add SQLSearchKey", "");
+                if (!string.IsNullOrWhiteSpace(newKey))
+                {
+                    tokenModel.SQLSearchKeys.Add(newKey);
+                }
+            }
+        }
+
+        private void RemoveSQLSearchKey(object parameter)
+        {
+            if (parameter is Tuple<DefeatureSettingsModel, string> data)
+            {
+                data.Item1.SQLSearchKeys.Remove(data.Item2);
+            }
+        }
+
+        private void SaveConfiguration(object parameter)
+        {
+            try
+            {
+                if (configXml == null)
+                {
+                    configXml = new XElement("Configuration", new XElement("DefeatureSettings"));
+                }
+
+                XElement defeature = configXml.Element("DefeatureSettings");
+                if (defeature == null)
+                {
+                    defeature = new XElement("DefeatureSettings");
+                    configXml.Add(defeature);
+                }
+
+                defeature.RemoveAll();
+
+                foreach (var token in DefeatureTokens)
+                {
+                    XElement tokenElement = new XElement("Token",
+                        new XAttribute("PrefixOffset", token.PrefixOffset),
+                        token.SQLSearchKeys.Select(key => new XElement("SQLSearchKey", key))
+                    );
+                    defeature.Add(tokenElement);
+                }
+
+                configXml.Save(xmlFilePath);
+                MessageBox.Show("Configuration saved successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error saving XML: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+    }
+}

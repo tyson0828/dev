@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <DatabaseList>Database1</DatabaseList>
+  <DatabaseList>Database2</DatabaseList>
+  <Defeature>
+    <CoreReadToken PrefixOffset="0">
+      <SQLSearchKey>DefaultCoreRead1;DefaultCoreRead2</SQLSearchKey>
+    </CoreReadToken>
+    <FinalToken PrefixOffset="1">
+      <SQLSearchKey>DefaultFinal</SQLSearchKey>
+    </FinalToken>
+    <TrackingToken PrefixOffset="2">
+      <SQLSearchKey>DefaultTracking1;DefaultTracking2;DefaultTracking3</SQLSearchKey>
+    </TrackingToken>
+  </Defeature>
+</Configuration>

@@ -1,0 +1,2 @@
+2/26/2025 5:21:42 PM: Unhandled UI Exception: 'The invocation of the constructor on type 'Presenter.App' that matches the specified binding constraints threw an exception.' Line number '4' and line position '14'.
+2/26/2025 6:52:51 PM: Unhandled UI Exception: Cannot locate resource 'views/settingview.xaml'.

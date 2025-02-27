@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Configuration>
+  <Defeature>
+    <CoreReadToken PrefixOffset="1">
+      <SQLSearchKey>%_RAWCOREREAD</SQLSearchKey>
+      <SQLSearchKey>dfa</SQLSearchKey>
+    </CoreReadToken>
+    <FinalToken PrefixOffset="1">
+      <SQLSearchKey>%_FINAL</SQLSearchKey>
+      <SQLSearchKey>fff</SQLSearchKey>
+    </FinalToken>
+    <TrackingToken PrefixOffset="1">
+      <SQLSearchKey>%SLICETRACKER%</SQLSearchKey>
+      <SQLSearchKey>ccc</SQLSearchKey>
+    </TrackingToken>
+  </Defeature>
+</Configuration>

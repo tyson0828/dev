@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">  
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <RootNamespace>DynamicXMLConfig</RootNamespace>
+    <AssemblyName>DynamicXMLConfig</AssemblyName>
+  </PropertyGroup>  
+
+  <ItemGroup>
+    <PackageReference Include="MaterialDesignThemes" Version="5.2.1" />
+  </ItemGroup>
+</Project>

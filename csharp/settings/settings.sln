@@ -1,0 +1,22 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2022
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presenter", "Presenter\Presenter.csproj", "{A2B7C6D3-1E55-4A34-9089-123456789ABC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamicXMLConfig", "DynamicXMLConfig\DynamicXMLConfig.csproj", "{EFB3F7D1-5C43-4B89-BAC9-9A92E06FC846}"
+
+EndProject
+Global
+    GlobalSection(SolutionConfigurationPlatforms) = preSolution
+        Debug|Any CPU = Debug|Any CPU
+        Release|Any CPU = Release|Any CPU
+    EndGlobalSection
+    GlobalSection(ProjectConfigurationPlatforms) = postSolution
+        {EFB3F7D1-5C43-4B89-BAC9-9A92E06FC846}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+        {EFB3F7D1-5C43-4B89-BAC9-9A92E06FC846}.Debug|Any CPU.Build.0 = Debug|Any CPU
+        {EFB3F7D1-5C43-4B89-BAC9-9A92E06FC846}.Release|Any CPU.ActiveCfg = Release|Any CPU
+        {EFB3F7D1-5C43-4B89-BAC9-9A92E06FC846}.Release|Any CPU.Build.0 = Release|Any CPU
+        {A2B7C6D3-1E55-4A34-9089-123456789ABC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+        {A2B7C6D3-1E55-4A34-9089-123456789ABC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+        {A2B7C6D3-1E55-4A34-9089-123456789ABC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+        {A2B7C6D3-1E55-4A34-9089-123456789ABC}.Release|Any CPU.Build.0 = Release|Any CPU
+    EndGlobalSection
+EndGlobal

@@ -1,0 +1,7 @@
+D:\dev\csharp\consolemouse\Binaries\ConsoleMouseSample.exe.config
+D:\dev\csharp\consolemouse\Binaries\ConsoleMouseSample.exe
+D:\dev\csharp\consolemouse\Binaries\ConsoleMouseSample.pdb
+D:\dev\csharp\consolemouse\Source\ConsoleMouseSample\obj\Debug\ConsoleMouseSample.csproj.AssemblyReference.cache
+D:\dev\csharp\consolemouse\Source\ConsoleMouseSample\obj\Debug\ConsoleMouseSample.csproj.CoreCompileInputs.cache
+D:\dev\csharp\consolemouse\Source\ConsoleMouseSample\obj\Debug\ConsoleMouseSample.exe
+D:\dev\csharp\consolemouse\Source\ConsoleMouseSample\obj\Debug\ConsoleMouseSample.pdb

@@ -1,0 +1,19 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+      {
+          "name": ".NET Core Launch (WPF)",
+          "type": "coreclr",
+          "request": "launch",
+          "preLaunchTask": "build",
+          "program": "${workspaceFolder}/Presenter/bin/Debug/net8.0-windows/Presenter.exe",
+          "args": [],
+          "cwd": "${workspaceFolder}/Presenter",
+          "stopAtEntry": false,
+          "console": "internalConsole",
+          "logging": {
+              "moduleLoad": false
+          }
+      }
+  ]
+}

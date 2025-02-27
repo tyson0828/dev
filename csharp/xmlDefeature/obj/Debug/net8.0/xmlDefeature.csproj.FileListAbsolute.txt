@@ -1,0 +1,14 @@
+D:\dev\csharp\xmlDefeature\bin\Debug\net8.0\xmlDefeature.exe
+D:\dev\csharp\xmlDefeature\bin\Debug\net8.0\xmlDefeature.deps.json
+D:\dev\csharp\xmlDefeature\bin\Debug\net8.0\xmlDefeature.runtimeconfig.json
+D:\dev\csharp\xmlDefeature\bin\Debug\net8.0\xmlDefeature.dll
+D:\dev\csharp\xmlDefeature\bin\Debug\net8.0\xmlDefeature.pdb
+D:\dev\csharp\xmlDefeature\obj\Debug\net8.0\xmlDefeature.GeneratedMSBuildEditorConfig.editorconfig
+D:\dev\csharp\xmlDefeature\obj\Debug\net8.0\xmlDefeature.AssemblyInfoInputs.cache
+D:\dev\csharp\xmlDefeature\obj\Debug\net8.0\xmlDefeature.AssemblyInfo.cs
+D:\dev\csharp\xmlDefeature\obj\Debug\net8.0\xmlDefeature.csproj.CoreCompileInputs.cache
+D:\dev\csharp\xmlDefeature\obj\Debug\net8.0\xmlDefeature.dll
+D:\dev\csharp\xmlDefeature\obj\Debug\net8.0\refint\xmlDefeature.dll
+D:\dev\csharp\xmlDefeature\obj\Debug\net8.0\xmlDefeature.pdb
+D:\dev\csharp\xmlDefeature\obj\Debug\net8.0\xmlDefeature.genruntimeconfig.cache
+D:\dev\csharp\xmlDefeature\obj\Debug\net8.0\ref\xmlDefeature.dll

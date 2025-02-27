@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "eZkp45TBlTE=",
+  "success": true,
+  "projectFilePath": "D:\\dev\\csharp\\settings\\DynamicXMLConfig\\DynamicXMLConfig.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\ryan\\.nuget\\packages\\materialdesigncolors\\5.2.1\\materialdesigncolors.5.2.1.nupkg.sha512",
+    "C:\\Users\\ryan\\.nuget\\packages\\materialdesignthemes\\5.2.1\\materialdesignthemes.5.2.1.nupkg.sha512",
+    "C:\\Users\\ryan\\.nuget\\packages\\microsoft.xaml.behaviors.wpf\\1.1.39\\microsoft.xaml.behaviors.wpf.1.1.39.nupkg.sha512"
+  ],
+  "logs": []
+}

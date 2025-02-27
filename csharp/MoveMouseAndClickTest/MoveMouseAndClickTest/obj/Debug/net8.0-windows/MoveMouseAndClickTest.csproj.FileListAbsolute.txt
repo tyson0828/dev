@@ -1,0 +1,16 @@
+D:\dev\csharp\MoveMouseAndClickTest\MoveMouseAndClickTest\bin\Debug\net8.0-windows\MoveMouseAndClickTest.exe
+D:\dev\csharp\MoveMouseAndClickTest\MoveMouseAndClickTest\bin\Debug\net8.0-windows\MoveMouseAndClickTest.deps.json
+D:\dev\csharp\MoveMouseAndClickTest\MoveMouseAndClickTest\bin\Debug\net8.0-windows\MoveMouseAndClickTest.runtimeconfig.json
+D:\dev\csharp\MoveMouseAndClickTest\MoveMouseAndClickTest\bin\Debug\net8.0-windows\MoveMouseAndClickTest.dll
+D:\dev\csharp\MoveMouseAndClickTest\MoveMouseAndClickTest\bin\Debug\net8.0-windows\MoveMouseAndClickTest.pdb
+D:\dev\csharp\MoveMouseAndClickTest\MoveMouseAndClickTest\obj\Debug\net8.0-windows\MoveMouseAndClickTest.Form1.resources
+D:\dev\csharp\MoveMouseAndClickTest\MoveMouseAndClickTest\obj\Debug\net8.0-windows\MoveMouseAndClickTest.csproj.GenerateResource.cache
+D:\dev\csharp\MoveMouseAndClickTest\MoveMouseAndClickTest\obj\Debug\net8.0-windows\MoveMouseAndClickTest.GeneratedMSBuildEditorConfig.editorconfig
+D:\dev\csharp\MoveMouseAndClickTest\MoveMouseAndClickTest\obj\Debug\net8.0-windows\MoveMouseAndClickTest.AssemblyInfoInputs.cache
+D:\dev\csharp\MoveMouseAndClickTest\MoveMouseAndClickTest\obj\Debug\net8.0-windows\MoveMouseAndClickTest.AssemblyInfo.cs
+D:\dev\csharp\MoveMouseAndClickTest\MoveMouseAndClickTest\obj\Debug\net8.0-windows\MoveMouseAndClickTest.csproj.CoreCompileInputs.cache
+D:\dev\csharp\MoveMouseAndClickTest\MoveMouseAndClickTest\obj\Debug\net8.0-windows\MoveMouseAndClickTest.dll
+D:\dev\csharp\MoveMouseAndClickTest\MoveMouseAndClickTest\obj\Debug\net8.0-windows\refint\MoveMouseAndClickTest.dll
+D:\dev\csharp\MoveMouseAndClickTest\MoveMouseAndClickTest\obj\Debug\net8.0-windows\MoveMouseAndClickTest.pdb
+D:\dev\csharp\MoveMouseAndClickTest\MoveMouseAndClickTest\obj\Debug\net8.0-windows\MoveMouseAndClickTest.genruntimeconfig.cache
+D:\dev\csharp\MoveMouseAndClickTest\MoveMouseAndClickTest\obj\Debug\net8.0-windows\ref\MoveMouseAndClickTest.dll

@@ -1,0 +1,13 @@
+D:\dev\csharp\SendInputsDemo\SendInputsDemo\bin\Debug\netcoreapp3.1\SendInputsDemo.exe
+D:\dev\csharp\SendInputsDemo\SendInputsDemo\bin\Debug\netcoreapp3.1\SendInputsDemo.deps.json
+D:\dev\csharp\SendInputsDemo\SendInputsDemo\bin\Debug\netcoreapp3.1\SendInputsDemo.runtimeconfig.json
+D:\dev\csharp\SendInputsDemo\SendInputsDemo\bin\Debug\netcoreapp3.1\SendInputsDemo.runtimeconfig.dev.json
+D:\dev\csharp\SendInputsDemo\SendInputsDemo\bin\Debug\netcoreapp3.1\SendInputsDemo.dll
+D:\dev\csharp\SendInputsDemo\SendInputsDemo\bin\Debug\netcoreapp3.1\SendInputsDemo.pdb
+D:\dev\csharp\SendInputsDemo\SendInputsDemo\obj\Debug\netcoreapp3.1\SendInputsDemo.GeneratedMSBuildEditorConfig.editorconfig
+D:\dev\csharp\SendInputsDemo\SendInputsDemo\obj\Debug\netcoreapp3.1\SendInputsDemo.AssemblyInfoInputs.cache
+D:\dev\csharp\SendInputsDemo\SendInputsDemo\obj\Debug\netcoreapp3.1\SendInputsDemo.AssemblyInfo.cs
+D:\dev\csharp\SendInputsDemo\SendInputsDemo\obj\Debug\netcoreapp3.1\SendInputsDemo.csproj.CoreCompileInputs.cache
+D:\dev\csharp\SendInputsDemo\SendInputsDemo\obj\Debug\netcoreapp3.1\SendInputsDemo.dll
+D:\dev\csharp\SendInputsDemo\SendInputsDemo\obj\Debug\netcoreapp3.1\SendInputsDemo.pdb
+D:\dev\csharp\SendInputsDemo\SendInputsDemo\obj\Debug\netcoreapp3.1\SendInputsDemo.genruntimeconfig.cache

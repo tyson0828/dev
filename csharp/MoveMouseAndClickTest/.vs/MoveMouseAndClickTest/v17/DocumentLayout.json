@@ -1,0 +1,87 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\dev\\csharp\\MoveMouseAndClickTest\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{FA637F9A-011E-4868-B87F-C8D54C1A2492}|MoveMouseAndClickTest\\MoveMouseAndClickTest.csproj|d:\\dev\\csharp\\movemouseandclicktest\\movemouseandclicktest\\inputsender.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FA637F9A-011E-4868-B87F-C8D54C1A2492}|MoveMouseAndClickTest\\MoveMouseAndClickTest.csproj|solutionrelative:movemouseandclicktest\\inputsender.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FA637F9A-011E-4868-B87F-C8D54C1A2492}|MoveMouseAndClickTest\\MoveMouseAndClickTest.csproj|d:\\dev\\csharp\\movemouseandclicktest\\movemouseandclicktest\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FA637F9A-011E-4868-B87F-C8D54C1A2492}|MoveMouseAndClickTest\\MoveMouseAndClickTest.csproj|solutionrelative:movemouseandclicktest\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FA637F9A-011E-4868-B87F-C8D54C1A2492}|MoveMouseAndClickTest\\MoveMouseAndClickTest.csproj|d:\\dev\\csharp\\movemouseandclicktest\\movemouseandclicktest\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{FA637F9A-011E-4868-B87F-C8D54C1A2492}|MoveMouseAndClickTest\\MoveMouseAndClickTest.csproj|solutionrelative:movemouseandclicktest\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FA637F9A-011E-4868-B87F-C8D54C1A2492}|MoveMouseAndClickTest\\MoveMouseAndClickTest.csproj|d:\\dev\\csharp\\movemouseandclicktest\\movemouseandclicktest\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FA637F9A-011E-4868-B87F-C8D54C1A2492}|MoveMouseAndClickTest\\MoveMouseAndClickTest.csproj|solutionrelative:movemouseandclicktest\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Form1.Designer.cs",
+              "DocumentMoniker": "D:\\dev\\csharp\\MoveMouseAndClickTest\\MoveMouseAndClickTest\\Form1.Designer.cs",
+              "RelativeDocumentMoniker": "MoveMouseAndClickTest\\Form1.Designer.cs",
+              "ToolTip": "D:\\dev\\csharp\\MoveMouseAndClickTest\\MoveMouseAndClickTest\\Form1.Designer.cs",
+              "RelativeToolTip": "MoveMouseAndClickTest\\Form1.Designer.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAAA0AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-17T07:19:57.15Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "D:\\dev\\csharp\\MoveMouseAndClickTest\\MoveMouseAndClickTest\\Form1.cs",
+              "RelativeDocumentMoniker": "MoveMouseAndClickTest\\Form1.cs",
+              "ToolTip": "D:\\dev\\csharp\\MoveMouseAndClickTest\\MoveMouseAndClickTest\\Form1.cs",
+              "RelativeToolTip": "MoveMouseAndClickTest\\Form1.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAYwCAAAAAqAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-17T07:19:33.505Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "InputSender.cs",
+              "DocumentMoniker": "D:\\dev\\csharp\\MoveMouseAndClickTest\\MoveMouseAndClickTest\\InputSender.cs",
+              "RelativeDocumentMoniker": "MoveMouseAndClickTest\\InputSender.cs",
+              "ToolTip": "D:\\dev\\csharp\\MoveMouseAndClickTest\\MoveMouseAndClickTest\\InputSender.cs",
+              "RelativeToolTip": "MoveMouseAndClickTest\\InputSender.cs",
+              "ViewState": "AQIAAJMAAAAAAAAAAAAmwLMAAAAVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-17T07:18:44.633Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Form1.cs [Design]",
+              "DocumentMoniker": "D:\\dev\\csharp\\MoveMouseAndClickTest\\MoveMouseAndClickTest\\Form1.cs",
+              "RelativeDocumentMoniker": "MoveMouseAndClickTest\\Form1.cs",
+              "ToolTip": "D:\\dev\\csharp\\MoveMouseAndClickTest\\MoveMouseAndClickTest\\Form1.cs [Design]",
+              "RelativeToolTip": "MoveMouseAndClickTest\\Form1.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-17T07:17:36.341Z",
+              "EditorCaption": " [Design]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

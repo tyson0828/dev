@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "mouse_click_move/1.0.0": {
+        "runtime": {
+          "mouse_click_move.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "mouse_click_move/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

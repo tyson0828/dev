@@ -1,0 +1,11 @@
+{
+  "configurations": [
+    {
+      "name": "C#: mouse_click_move",
+      "type": "dotnet",
+      "request": "launch",
+      "projectPath": "${workspaceFolder}\\mouse_click_move.csproj",
+      "launchConfigurationId": "TargetFramework=;mouse_click_move"
+    }
+  ]
+}

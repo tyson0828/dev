@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "kekDm44qvxU=",
+  "success": true,
+  "projectFilePath": "D:\\dev\\csharp\\D4MouseClickMove\\D4MouseClickMove\\D4MouseClickMove.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Tyson\\.nuget\\packages\\mousekeyhook\\5.7.1\\mousekeyhook.5.7.1.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -1,0 +1,3 @@
+﻿  WindowsProject1.cpp
+D:\dev\csharp\WindowsProject1\WindowsProject1\WindowsProject1.cpp(102,20): warning C4244: 'return': conversion from 'WPARAM' to 'int', possible loss of data
+  WindowsProject1.vcxproj -> D:\dev\csharp\WindowsProject1\WindowsProject1\x64\Debug\WindowsProject1.exe

@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Configuration>
+  <Defeature>
+    <Token PrefixOffset="1">
+      <SQLSearchKey>%_RAWCOREREAD</SQLSearchKey>
+    </Token>
+    <Token PrefixOffset="1">
+      <SQLSearchKey>%_FINAL</SQLSearchKey>
+    </Token>
+    <Token PrefixOffset="1">
+      <SQLSearchKey>%SLICETRACKER%</SQLSearchKey>
+    </Token>
+  </Defeature>
+</Configuration>
