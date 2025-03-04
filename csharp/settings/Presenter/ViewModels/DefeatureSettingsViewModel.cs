@@ -24,7 +24,7 @@ namespace Presenter.ViewModels
             DefeatureTokens = new ObservableCollection<DefeatureSettingsModel>();
             LoadConfiguration();
 
-            AddSQLSearchKeyCommand = new RelayCommand(AddSQLSearchKey);
+            AddSQLSearchKeyCommand = new RelayCommand<object>(AddSQLSearchKey);
             RemoveSQLSearchKeyCommand = new RelayCommand<object>(RemoveSQLSearchKey);
             SaveCommand = new RelayCommand(SaveConfiguration);
         }
@@ -64,27 +64,47 @@ namespace Presenter.ViewModels
             }
         }
 
-        private void AddSQLSearchKey()
+        private void AddSQLSearchKey(object parameter)
         {
             var inputDialog = new Presenter.Views.InputDialog("Enter new SQLSearchKey:");
             if (inputDialog.ShowDialog() == true)
             {
                 string newKey = inputDialog.ResponseText;
+                /*
                 if (!string.IsNullOrWhiteSpace(newKey))
                 {
                     DefeatureTokens.FirstOrDefault()?.SQLSearchKeys.Add(newKey);
+                }
+                */
+
+                if (parameter is DefeatureSettingsModel model)
+                {
+                    model.SQLSearchKeys.Add(newKey);
                 }
             }
         }
 
         private void RemoveSQLSearchKey(object parameter)
         {
+          /*
             if (parameter is DefeatureSettingsModel model)
             {
                 // If SQLSearchKeys is not empty, remove the last entry as an example
                 if (model.SQLSearchKeys.Count > 0)
                 {
                     model.SQLSearchKeys.RemoveAt(model.SQLSearchKeys.Count - 1);
+                }
+            }
+            */
+
+            if (parameter is Tuple<object, object> data)
+            {
+                string keyToRemove = data.Item1 as string; // SQLSearchKey
+                var model = data.Item2 as DefeatureSettingsModel; // Corresponding Model
+
+                if (model != null && !string.IsNullOrEmpty(keyToRemove) && model.SQLSearchKeys.Contains(keyToRemove))
+                {
+                    model.SQLSearchKeys.Remove(keyToRemove);
                 }
             }
         }
