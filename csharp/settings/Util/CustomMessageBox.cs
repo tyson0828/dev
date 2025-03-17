@@ -1,11 +1,11 @@
 using System;
 using System.Runtime.InteropServices;
 using System.Threading;
-using System.Windows;
-using System.Windows.Threading;
+using System.Windows.Forms;
 
 public static class CustomMessageBox
 {
+    // Basic Show method (no configuration)
     public static void Show(string message, string title, bool isGuiMode)
     {
         string timestamp = DateTime.Now.ToString("HHmmss");
@@ -17,17 +17,18 @@ public static class CustomMessageBox
         }
         else
         {
-            ShowWithTimeout(message, uniqueTitle, 5);
+            ShowWithTimeout(message, uniqueTitle, MessageBoxButtons.OK, MessageBoxIcon.Information, 5000);
         }
     }
 
-    public static MessageBoxResult ShowWithConfig(string message, string title, MessageBoxButton buttons,
-                                                  MessageBoxImage icon, MessageBoxResult defaultResult, 
-                                                  bool isGuiMode, int timeoutMilliseconds = 5000)
+    // Configurable Show method with timeout and DialogResult return
+    public static DialogResult ShowWithConfig(string message, string title, MessageBoxButtons buttons,
+                                              MessageBoxIcon icon, DialogResult defaultResult,
+                                              bool isGuiMode, int timeoutMilliseconds = 5000)
     {
         string timestamp = DateTime.Now.ToString("HHmmss");
         string uniqueTitle = $"{title} - {timestamp}";
-        MessageBoxResult result = defaultResult;
+        DialogResult result = defaultResult;
 
         if (isGuiMode)
         {
@@ -35,28 +36,41 @@ public static class CustomMessageBox
         }
         else
         {
-            var messageBoxThread = new Thread(() =>
-            {
-                result = MessageBox.Show(message, uniqueTitle, buttons, icon, defaultResult);
-            });
+            result = ShowWithTimeout(message, uniqueTitle, buttons, icon, timeoutMilliseconds, defaultResult);
+        }
 
-            messageBoxThread.SetApartmentState(ApartmentState.STA);
-            messageBoxThread.Start();
+        return result;
+    }
 
-            if (!messageBoxThread.Join(timeoutMilliseconds))
+    // Show message box with timeout logic for non-GUI mode
+    private static DialogResult ShowWithTimeout(string message, string title, MessageBoxButtons buttons,
+                                                MessageBoxIcon icon, int timeoutMilliseconds,
+                                                DialogResult defaultResult = DialogResult.None)
+    {
+        DialogResult result = defaultResult;
+
+        var messageBoxThread = new Thread(() =>
+        {
+            result = MessageBox.Show(message, title, buttons, icon, defaultResult);
+        });
+
+        messageBoxThread.SetApartmentState(ApartmentState.STA);
+        messageBoxThread.Start();
+
+        // Wait for timeout, if the thread is still alive, attempt to close the message box
+        if (!messageBoxThread.Join(timeoutMilliseconds))
+        {
+            IntPtr hWnd = FindWindow(null, title);
+            if (hWnd != IntPtr.Zero)
             {
-                IntPtr msgBoxHandle = FindWindow(null, uniqueTitle);
-                if (msgBoxHandle != IntPtr.Zero)
-                {
-                    SendMessage(msgBoxHandle, WM_CLOSE, IntPtr.Zero, IntPtr.Zero);
-                }
+                SendMessage(hWnd, WM_CLOSE, IntPtr.Zero, IntPtr.Zero);
             }
         }
 
         return result;
     }
 
-    // P/Invoke for interacting with native Windows API
+    // P/Invoke declarations for interacting with Windows API
     [DllImport("user32.dll", SetLastError = true)]
     private static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
 
