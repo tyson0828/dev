@@ -160,5 +160,99 @@ PList Post1 {
     }
 }
 
+using System;
+using System.Collections.Generic;
+using System.IO;
+using Xunit;
+
+public class PListParserTests
+{
+    [Fact]
+    public void Should_Extract_DirectPatterns_And_SubPlists_Correctly()
+    {
+        // Arrange
+        var testDir = "TestData";
+        Directory.CreateDirectory(testDir);
+
+        File.WriteAllText(Path.Combine(testDir, "A.plist"), @"
+PList A.1 {
+  PreExecRefPList Pre1
+  Pat A.1.p1
+  RefPList B.1
+  Pat A.1.p2
+  RefPList B.1
+  Pat A.1.p3
+  PostExecRefPList Post1
+}
+
+PList A.2 {
+  PreExecRefPList Pre1
+  Pat A.2.p1
+  RefPList B.1
+  Pat A.2.p2
+  RefPList B.1
+  Pat A.2.p3
+  PostExecRefPList Post1
+}
+
+PList A.3 {
+  PreExecRefPList Pre1
+  Pat A.2.p1
+  RefPList B.1
+  Pat A.3.p2
+  RefPList B.1
+  Pat A.3.p3
+  PostExecRefPList Post1
+}
+");
+
+        File.WriteAllText(Path.Combine(testDir, "B.plist"), @"
+PList B.1 {
+  RefPList C.1
+  Pat B.1.p1
+}
+");
+
+        File.WriteAllText(Path.Combine(testDir, "C.plist"), @"
+PList C.1 {
+  Pat C.1.p1
+}
+");
+
+        File.WriteAllText(Path.Combine(testDir, "Pre1.plist"), @"
+PList Pre1 {
+  Pat Pre1.p1
+}
+");
+
+        File.WriteAllText(Path.Combine(testDir, "Post1.plist"), @"
+PList Post1 {
+  Pat Post1.p1
+}
+");
+
+        var parser = new PListParser();
+
+        // Act
+        parser.ParseAllPlists(testDir);
+        var directMap = parser.GetDirectPatternMap();
+        var subMap = parser.GetSubPlistMap();
+
+        // Assert - Direct Patterns
+        Assert.Equal(new List<string> { "A.1.p1", "A.1.p2", "A.1.p3" }, directMap["A.1"]);
+        Assert.Equal(new List<string> { "A.2.p1", "A.2.p2", "A.2.p3" }, directMap["A.2"]);
+        Assert.Equal(new List<string> { "A.2.p1", "A.3.p2", "A.3.p3" }, directMap["A.3"]);
+
+        // Assert - Sub PLists
+        Assert.Equal(new List<string> { "Pre1", "B.1", "B.1", "Post1" }, subMap["A.1"]);
+        Assert.Equal(new List<string> { "Pre1", "B.1", "B.1", "Post1" }, subMap["A.2"]);
+        Assert.Equal(new List<string> { "Pre1", "B.1", "B.1", "Post1" }, subMap["A.3"]);
+
+        // Optional cleanup
+        Directory.Delete(testDir, true);
+    }
+}
+
+    
     }
 }
