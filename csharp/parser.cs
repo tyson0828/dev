@@ -72,9 +72,9 @@ public class PListParser
                 continue;
             }
 
-            if (line == "{") continue;
+            if (Regex.IsMatch(line, @"^\{\s*(#|//|$)")) continue;
 
-            if (line == "}")
+            if (Regex.IsMatch(line, @"^\}\s*(#.*)?$"))
             {
                 if (stack.Count > 0)
                 {
