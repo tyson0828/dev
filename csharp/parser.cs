@@ -3,26 +3,29 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text.RegularExpressions;
 
-class PListParser
+public class PListParser
 {
-    private readonly Dictionary<string, List<string>> rawMap = new();
-    private readonly Dictionary<string, HashSet<string>> flattenedMap = new();
+  private readonly Dictionary<string, List<string>> rawMap = new();
+  private readonly Dictionary<string, HashSet<string>> flattenedMap = new();
 
-    public void ParseAllPlists(string directoryPath)
+  public Dictionary<string, HashSet<string>> GetFlattenedMap() => flattenedMap;
+
+  public void ParseAllPlists(string directoryPath)
+  {
+    foreach (var filePath in Directory.GetFiles(directoryPath, "*.plist", SearchOption.AllDirectories))
     {
-        foreach (var filePath in Directory.GetFiles(directoryPath, "*.plist", SearchOption.AllDirectories))
-        {
-            var lines = File.ReadAllLines(filePath);
-            ParseNestedPlists(lines, null, Path.GetFileName(filePath));
-        }
-
-        foreach (var plist in rawMap.Keys)
-        {
-            var resolved = new HashSet<string>();
-            ResolveFlattenedPatterns(plist, resolved, new HashSet<string>());
-            flattenedMap[plist] = resolved;
-        }
+      
+      var lines = File.ReadAllLines(filePath);
+      ParseNestedPlists(lines, null, Path.GetFileName(filePath));
     }
+
+    foreach (var plist in rawMap.Keys)
+    {
+      var resolved = new HashSet<string>();
+      ResolveFlattenedPatterns(plist, resolved, new HashSet<string>());
+      flattenedMap[plist] = resolved;
+    }
+  }
 
     private void ParseNestedPlists(string[] lines, string? parentPrefix, string fileName)
     {
