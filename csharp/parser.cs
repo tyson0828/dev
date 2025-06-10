@@ -7,9 +7,13 @@ public class PListParser
 {
   private readonly Dictionary<string, List<string>> rawMap = new();
   private readonly Dictionary<string, HashSet<string>> flattenedMap = new();
+  private readonly Dictionary<string, List<string>> directPatternsMap = new();
+  private readonly Dictionary<string, List<string>> subPlistsMap = new();
 
   public Dictionary<string, HashSet<string>> GetFlattenedMap() => flattenedMap;
-
+  public Dictionary<string, List<string>> GetDirectPatternMap() => directPatternsMap;
+  public Dictionary<string, List<string>> GetSubPlistMap() => subPlistsMap;
+  
   public void ParseAllPlists(string directoryPath)
   {
     foreach (var filePath in Directory.GetFiles(directoryPath, "*.plist", SearchOption.AllDirectories))
@@ -24,6 +28,26 @@ public class PListParser
       var resolved = new HashSet<string>();
       ResolveFlattenedPatterns(plist, resolved, new HashSet<string>());
       flattenedMap[plist] = resolved;
+
+      var directPats = new List<string>();
+      var subPlists = new List<string>();
+  
+      foreach (var line in rawMap[plist])
+      {
+          if (line.StartsWith("Pat "))
+              directPats.Add(line.Substring(4).Trim(';', ' '));
+          else if (line.StartsWith("RefPList ") || 
+                   line.StartsWith("PreExecRefPList ") || 
+                   line.StartsWith("PostExecRefPList "))
+          {
+              var parts = line.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+              if (parts.Length >= 2)
+                  subPlists.Add(parts[1].Trim(';', ' '));
+          }
+      }
+  
+      directPatternsMap[plist] = directPats;
+      subPlistsMap[plist] = subPlists;      
     }
   }
 
