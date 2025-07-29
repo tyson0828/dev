@@ -15,20 +15,22 @@ public class XmlLoader
         TrimStringProperties(obj);
         return obj;
     }
-
-    private static void TrimStringProperties(object? obj)
+    
+    private static void TrimStringMembers(object? obj)
     {
         if (obj == null) return;
-
+    
         Type type = obj.GetType();
-        foreach (PropertyInfo prop in type.GetProperties(BindingFlags.Public | BindingFlags.Instance))
+    
+        // First: Handle properties
+        foreach (var prop in type.GetProperties(BindingFlags.Public | BindingFlags.Instance))
         {
             if (!prop.CanRead || !prop.CanWrite) continue;
-
+    
             if (prop.PropertyType == typeof(string))
             {
                 string? val = (string?)prop.GetValue(obj);
-                if (val != null && (val != val.Trim()))
+                if (val != null && val != val.Trim())
                 {
                     Console.WriteLine($"[Trimmed] {type.Name}.{prop.Name}: '{val}' → '{val.Trim()}'");
                     prop.SetValue(obj, val.Trim());
@@ -37,19 +39,43 @@ public class XmlLoader
             else if (!prop.PropertyType.IsPrimitive && !prop.PropertyType.IsEnum && !prop.PropertyType.IsArray)
             {
                 var subObj = prop.GetValue(obj);
-                if (subObj != null)
+                HandleNested(subObj);
+            }
+        }
+    
+        // Then: Handle public fields
+        foreach (var field in type.GetFields(BindingFlags.Public | BindingFlags.Instance))
+        {
+            if (field.FieldType == typeof(string))
+            {
+                string? val = (string?)field.GetValue(obj);
+                if (val != null && val != val.Trim())
                 {
-                    if (subObj is System.Collections.IEnumerable collection)
-                    {
-                        foreach (var item in collection)
-                            TrimStringProperties(item);
-                    }
-                    else
-                    {
-                        TrimStringProperties(subObj);
-                    }
+                    Console.WriteLine($"[Trimmed] {type.Name}.{field.Name}: '{val}' → '{val.Trim()}'");
+                    field.SetValue(obj, val.Trim());
                 }
+            }
+            else if (!field.FieldType.IsPrimitive && !field.FieldType.IsEnum && !field.FieldType.IsArray)
+            {
+                var subObj = field.GetValue(obj);
+                HandleNested(subObj);
             }
         }
     }
+    
+    private static void HandleNested(object? subObj)
+    {
+        if (subObj == null) return;
+    
+        if (subObj is System.Collections.IEnumerable collection)
+        {
+            foreach (var item in collection)
+                TrimStringMembers(item);
+        }
+        else
+        {
+            TrimStringMembers(subObj);
+        }
+    }
+    
 }
