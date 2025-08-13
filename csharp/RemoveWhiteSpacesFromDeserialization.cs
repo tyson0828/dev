@@ -1,81 +1,119 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Xml.Serialization;
 
-public class XmlLoader
+public static class XmlLoader
 {
     public static T DeserializeAndTrim<T>(string filePath)
     {
-        XmlSerializer serializer = new XmlSerializer(typeof(T));
-        using FileStream fs = new FileStream(filePath, FileMode.Open);
-        T obj = (T)serializer.Deserialize(fs)!;
+        var serializer = new XmlSerializer(typeof(T));
+        using var fs = new FileStream(filePath, FileMode.Open);
+        var obj = (T)serializer.Deserialize(fs)!;
 
-        TrimStringProperties(obj);
+        // Use reference-based visited set to break cycles
+        var visited = new HashSet<object>(ReferenceEqualityComparer.Instance);
+        TrimStringMembers(obj!, visited, depth: 0);
         return obj;
     }
-    
-    private static void TrimStringMembers(object? obj)
+
+    private static void TrimStringMembers(object obj, HashSet<object> visited, int depth)
     {
         if (obj == null) return;
-    
-        Type type = obj.GetType();
-    
-        // First: Handle properties
+
+        // Cap depth defensively (optional)
+        if (depth > 256) return;
+
+        // Strings: nothing to recurse into
+        if (obj is string) return;
+
+        // Break cycles by identity
+        if (!visited.Add(obj)) return;
+
+        var type = obj.GetType();
+
+        // Optionally skip framework types to reduce noise
+        // if (type.Namespace != null && type.Namespace.StartsWith("System", StringComparison.Ordinal)) return;
+
+        // Properties
         foreach (var prop in type.GetProperties(BindingFlags.Public | BindingFlags.Instance))
         {
-            if (!prop.CanRead || !prop.CanWrite) continue;
-    
-            if (prop.PropertyType == typeof(string))
+            if (!prop.CanRead) continue;
+
+            var propType = prop.PropertyType;
+            if (propType == typeof(string) && prop.CanWrite)
             {
-                string? val = (string?)prop.GetValue(obj);
-                if (val != null && val != val.Trim())
+                var val = (string?)prop.GetValue(obj);
+                if (val != null)
                 {
-                    Console.WriteLine($"[Trimmed] {type.Name}.{prop.Name}: '{val}' → '{val.Trim()}'");
-                    prop.SetValue(obj, val.Trim());
+                    var trimmed = val.Trim();
+                    if (!ReferenceEquals(val, trimmed) && val != trimmed)
+                    {
+                        Console.WriteLine($"[Trimmed] {type.Name}.{prop.Name}: '{val}' → '{trimmed}'");
+                        prop.SetValue(obj, trimmed);
+                    }
                 }
             }
-            else if (!prop.PropertyType.IsPrimitive && !prop.PropertyType.IsEnum && !prop.PropertyType.IsArray)
+            else if (!propType.IsPrimitive && !propType.IsEnum && !propType.IsArray)
             {
                 var subObj = prop.GetValue(obj);
-                HandleNested(subObj);
+                RecurseInto(subObj, visited, depth);
             }
         }
-    
-        // Then: Handle public fields
+
+        // Fields
         foreach (var field in type.GetFields(BindingFlags.Public | BindingFlags.Instance))
         {
-            if (field.FieldType == typeof(string))
+            var fType = field.FieldType;
+
+            if (fType == typeof(string))
             {
-                string? val = (string?)field.GetValue(obj);
-                if (val != null && val != val.Trim())
+                var val = (string?)field.GetValue(obj);
+                if (val != null)
                 {
-                    Console.WriteLine($"[Trimmed] {type.Name}.{field.Name}: '{val}' → '{val.Trim()}'");
-                    field.SetValue(obj, val.Trim());
+                    var trimmed = val.Trim();
+                    if (val != trimmed)
+                    {
+                        Console.WriteLine($"[Trimmed] {type.Name}.{field.Name}: '{val}' → '{trimmed}'");
+                        field.SetValue(obj, trimmed);
+                    }
                 }
             }
-            else if (!field.FieldType.IsPrimitive && !field.FieldType.IsEnum && !field.FieldType.IsArray)
+            else if (!fType.IsPrimitive && !fType.IsEnum && !fType.IsArray)
             {
                 var subObj = field.GetValue(obj);
-                HandleNested(subObj);
+                RecurseInto(subObj, visited, depth);
             }
         }
     }
-    
-    private static void HandleNested(object? subObj)
+
+    private static void RecurseInto(object? subObj, HashSet<object> visited, int depth)
     {
         if (subObj == null) return;
-    
-        if (subObj is System.Collections.IEnumerable collection)
+        if (subObj is string) return;
+
+        if (subObj is IEnumerable seq)
         {
-            foreach (var item in collection)
-                TrimStringMembers(item);
+            foreach (var item in seq)
+            {
+                if (item == null || item is string) continue;
+                TrimStringMembers(item, visited, depth + 1);
+            }
         }
         else
         {
-            TrimStringMembers(subObj);
+            TrimStringMembers(subObj, visited, depth + 1);
         }
     }
-    
+
+    // Reference equality comparer for cycle detection
+    private sealed class ReferenceEqualityComparer : IEqualityComparer<object>
+    {
+        public static readonly ReferenceEqualityComparer Instance = new();
+        public new bool Equals(object x, object y) => ReferenceEquals(x, y);
+        public int GetHashCode(object obj) => RuntimeHelpers.GetHashCode(obj);
+    }
 }
